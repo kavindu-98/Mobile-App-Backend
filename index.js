@@ -5,6 +5,7 @@ import mongoose from "mongoose";
 // import routes here
 import testRoutes from "./routes/test.js";
 import userRoutes from "./routes/userRoutes.js";
+import driverRoutes from "./routes/driverRoutes.js";
 import productDetailsRoute from "./routes/productDetailsRoute.js";
 dotenv.config();
 mongoose.set('strictQuery',false);   
@@ -27,9 +28,11 @@ const app = express();
 const PORT = 5000;
 
 app.use(bodyParser.json());
+
 app.use('/productData',productDetailsRoute);
+app.use('/driver',driverRoutes);
 app.use("/test", testRoutes);
-app.use("/user", userRoutes);
+app.use("/api/users", userRoutes);
 
 app.get("/", (req, res) => {
   res.send("Hello From Homepage");
